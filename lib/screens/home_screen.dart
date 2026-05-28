@@ -21,7 +21,13 @@ final CountController controlBox = Get.put(CountController());
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 13, 103, 176),
       ),
-      body: Center(
+      body: Obx(()=>Container(
+        margin: EdgeInsets.all(25),
+        height: Get.height * 0.8,
+        width: Get.width * 0.8,
+        decoration: BoxDecoration(
+          color: controlBox.containerColor.value
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,10 +40,14 @@ final CountController controlBox = Get.put(CountController());
             SizedBox(height: 15),
             ElevatedButton(onPressed: (){
               controlBox.decrementCounter();
-            }, child: Icon(Icons.remove))
+            }, child: Icon(Icons.remove)),
+            SizedBox(height: 15),
+            ElevatedButton(onPressed: (){
+              controlBox.changeColor();
+            }, child: Text('Change'))
           ],
         ),
-      ),
+      )),
 
     );
   }
